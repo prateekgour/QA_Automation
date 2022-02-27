@@ -13,9 +13,10 @@ public class ExcelMapping {
 		
 		// Add new mapping entries below //
 		
-		excelMapping.put("CurrentEnvURL","Sheet1,1,1"); // current env url
+		excelMapping.put("CurrentEnv","Sheet1,1,1"); // current env
 		excelMapping.put("Browser","Sheet1,2,1"); // current browser
-		excelMapping.put("Browser2","Sheet1,3,1");
+		excelMapping.put("DB_Region","Sheet1,3,1"); // current DB region
+		excelMapping.put("CurrentEnvURL", "Sheet1,4,1"); // get the URL based on env
 	
 	}
 

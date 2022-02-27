@@ -1,13 +1,17 @@
 package seleniumPracticeTest;
 
+import java.sql.SQLException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class FirstScriptTest {
+import baseClass.BaseClass;
+
+public class FirstScriptTest extends BaseClass{
 
 	
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         // declaration and instantiation of objects/variables
     	//System.setProperty("webdriver.gecko.driver","C:\\geckodriver.exe");
 		//WebDriver driver = new FirefoxDriver();
@@ -15,7 +19,10 @@ public class FirstScriptTest {
 		System.setProperty("webdriver.chrome.driver",".\\resources\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
     	
-        String baseUrl = "http://demo.guru99.com/test/newtours/";
+       
+	//	getConnection("postgres","postgres","yash9496");
+		
+		String baseUrl = "http://demo.guru99.com/test/newtours/";
         String expectedTitle = "Welcome: Mercury Tours";
         String actualTitle = "";
 

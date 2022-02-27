@@ -30,7 +30,7 @@ public class DownloadFileTest {
 			Process exec = Runtime.getRuntime().exec(wget_command);
 			int exitVal = exec.waitFor();
 			System.out.println("Exit value: " + exitVal);
-		} catch (InterruptedException | IOException ex) {
+		} catch (Exception ex) {
 			System.out.println(ex.toString());
 		}
 		driver.close();
