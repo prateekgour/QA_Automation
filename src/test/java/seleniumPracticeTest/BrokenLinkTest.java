@@ -9,18 +9,27 @@ import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
-import selenuimPracticeClass.BaseClass;
+import baseClass.BaseClass;
 import selenuimPracticeClass.BrokenLinkClass;
 
-public class BrokenLinkTest {
+public class BrokenLinkTest extends BaseClass {
 
-	public static void main(String[] args) {
+	WebDriver driver;
+	BrokenLinkClass blc;
 
-		BaseClass bs = new BaseClass();
-		WebDriver driver = bs.initiateBrowser();
-		BrokenLinkClass blc = new BrokenLinkClass(driver);
+	@BeforeTest
+	public void beforeBrokenLinkTest() {
 
+		driver = initiateBrowser();
+		blc = new BrokenLinkClass(driver);
+
+	}
+
+	@Test
+	public void brokenLinkTest() {
 		String baseURL = "https://rahulshettyacademy.com/AutomationPractice/";
 		String url = "";
 		HttpURLConnection huc = null;
@@ -32,8 +41,8 @@ public class BrokenLinkTest {
 		List<WebElement> LinkElements = blc.Links();
 
 		int listSize = LinkElements.size();
-		System.out.println("List Size is : "+listSize);
-		
+		System.out.println("List Size is : " + listSize);
+
 		Iterator<WebElement> it = LinkElements.iterator();
 
 		while (it.hasNext()) {
@@ -46,10 +55,13 @@ public class BrokenLinkTest {
 				continue;
 			}
 
-			/*if (!url.startsWith(baseURL)) {
-				System.out.println("URL belongs to another domain, skipping it.");
-				continue;
-			}*/
+			
+			 if (!url.startsWith(baseURL)) {
+			 System.out.println("URL belongs to another domain, skipping it.");
+			 continue; 
+			 
+			 }
+			 
 
 			try {
 				huc = (HttpURLConnection) (new URL(url).openConnection());
@@ -67,15 +79,22 @@ public class BrokenLinkTest {
 				}
 
 			} catch (MalformedURLException e) {
-				
+
 				e.printStackTrace();
 			} catch (IOException e) {
-				
+
 				e.printStackTrace();
 			}
 		}
 
 		driver.close();
 	}
+
+	// public static void main(String[] args) {
+	//
+	//// BaseClass bs = new BaseClass();
+	//
+	//
+	// }
 
 }

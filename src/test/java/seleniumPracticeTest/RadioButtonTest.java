@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import selenuimPracticeClass.BaseClass;
+import baseClass.BaseClass;
 import selenuimPracticeClass.RadioButtonClass;
 
 public class RadioButtonTest extends BaseClass{

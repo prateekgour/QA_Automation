@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test thread-count="5" name="Test1(failed)">
+    <classes>
+      <class name="seleniumPracticeTest.FileUploadTest">
+        <methods>
+          <include name="uploadTest"/>
+          <include name="beforeUploadTest"/>
+          <include name="afterUploadTest"/>
+        </methods>
+      </class> <!-- seleniumPracticeTest.FileUploadTest -->
+    </classes>
+  </test> <!-- Test1(failed) -->
+  <test thread-count="5" name="Test3(failed)">
+    <classes>
+      <class name="seleniumPracticeTest.FileUploadTest">
+        <methods>
+          <include name="uploadTest"/>
+          <include name="beforeUploadTest"/>
+          <include name="afterUploadTest"/>
+        </methods>
+      </class> <!-- seleniumPracticeTest.FileUploadTest -->
+    </classes>
+  </test> <!-- Test3(failed) -->
+</suite> <!-- Failed suite [Suite] -->
