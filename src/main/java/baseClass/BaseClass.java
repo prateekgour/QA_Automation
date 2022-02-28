@@ -1,19 +1,25 @@
 package baseClass;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BaseClass {
@@ -57,8 +63,14 @@ public class BaseClass {
         if (browser.equalsIgnoreCase("chrome")) {
         	
         	System.setProperty("webdriver.chrome.driver", ".\\resources\\chromedriver.exe");
-			driver = new ChromeDriver();
+        	//create object of chrome options
+            ChromeOptions options = new ChromeOptions();
+            
+            //add the headless argument
+           // options.addArguments("headless");
+			driver = new ChromeDriver(options);
 			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.get(envURL);
 			
 		} else if (browser.equalsIgnoreCase("firefox")) {
@@ -286,6 +298,45 @@ public class BaseClass {
 		stmt.executeUpdate(query);
 		return true;
 		
+	}
+	
+	public Object[][] getLoginCreds(int startRow, int endRow) throws IOException {
+
+		// Convert row noss to index
+		startRow--;
+		endRow--;
+
+		// Create an object of File class to open xlsx file
+		File file = new File(testDataPath);
+
+		// Create an object of FileInputStream class to read excel file
+		FileInputStream inputStream = new FileInputStream(file);
+
+		// Create object of XSSFWorkbook class
+		Workbook workbook = new XSSFWorkbook(inputStream);
+
+		// Read sheet inside the workbook by its name
+		Sheet sheet = workbook.getSheet("Login");
+
+		// Object for returning creds
+		Object object[][] = new Object[endRow - startRow + 1][2];
+
+		for (int i = startRow; i < endRow + 1; i++) {
+
+			Row row = sheet.getRow(i);
+
+			// Create a loop to get cell values
+
+			for (int j = 0; j <= 1; j++) {
+
+				object[i][j] = row.getCell(j).getStringCellValue();
+			}
+
+			//object[i][2] = Integer.toString(i + 1);
+		}
+
+		return object;
+
 	}
 
 }
