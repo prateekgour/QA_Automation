@@ -8,11 +8,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.postgresql.util.PSQLException;
 import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
@@ -35,6 +37,10 @@ public class FileUploadTest extends BaseClass {
 		driver = initiateBrowser();
 		fuc = new FileUploadClass(driver);
 		getConnection("postgres", "yash9496");
+		
+		Capabilities cap = ((ChromeDriver) driver).getCapabilities();
+	    System.out.println(cap.getVersion());
+				
 
 	}
 

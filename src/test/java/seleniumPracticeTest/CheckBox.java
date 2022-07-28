@@ -1,6 +1,7 @@
 package seleniumPracticeTest;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,6 +12,7 @@ public class CheckBox {
 		System.setProperty("webdriver.chrome.driver",".\\resources\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		
+	
 		String baseUrl = "https://rahulshettyacademy.com/AutomationPractice/";
 		String actualOutput ="";
 		String expectedOutput = "bmw";

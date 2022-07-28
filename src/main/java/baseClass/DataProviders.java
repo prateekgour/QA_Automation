@@ -9,12 +9,13 @@ public class DataProviders {
 	
 	// dataProvider to get login credentials
 	@DataProvider(name = "CredentialsProvider1")
-	public static Object[][] getCredentials() throws IOException {
+	public Object[][] getCredentials() throws IOException {
 
 		// test data
 		BaseClass bs = new BaseClass();
 
 		Object[][] credentials = bs.getLoginCreds(1, 5);
+				
 		return credentials;
 	}
 	
